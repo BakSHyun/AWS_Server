@@ -7,8 +7,18 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var mysql = require('mysql');
 
 var app = express();
+
+var conn = mysql.createConnection({
+	host:'localhost',
+	user:'kinakone',
+	password:'kinakone123',
+	database :'kinakonedb'
+})
+conn.connect();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -57,3 +67,4 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
+

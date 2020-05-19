@@ -3,12 +3,21 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', {
-    title: 'KINAKONE',
+	conn.query("select * from memeber",function(err,rows){
+		var name = rows.name;
+		var addr = rows.addr;
+		var tell = rows.tell;
+	});
+  res.render('index',{
+	  
+	  	title: 'KINAKONE',
+    		name:name,
+		addr:addr,
+		tell:tell,
       contents:{tit: "이미지 제목",
       description: "이미지 설명",
       imgurl: "public/img/"+"추가 이미지 주소"}
-    });
+	  });
 });
 router.get('/gallery', function(req, res) {
   res.render('list', {
